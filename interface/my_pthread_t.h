@@ -7,5 +7,5 @@
 
 int my_pthread_create(ucontext_t *thread, void (*function)(), void *arg);
 void my_pthread_yield();
-void pthread_exit(void *value_ptr);
+void my_pthread_exit(void *value_ptr);
 int my_pthread_join(ucontext_t thread, void **value_ptr);

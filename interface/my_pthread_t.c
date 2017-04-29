@@ -8,7 +8,7 @@ int my_pthread_create(ucontext_t *thread, void (*function)(), void *arg){
 	printf("getcontext()\n");
 	getcontext(thread);
 
-	// If non-zero, specifies the next context to run after thisone finishes.
+	// If non-zero, specifies the next context to run after this one finishes.
 	thread->uc_link = 0; 
 	// Allocate memory for the stack
 	thread->uc_stack.ss_sp = malloc(THREAD_STACK);
@@ -42,7 +42,8 @@ int my_pthread_create(ucontext_t *thread, void (*function)(), void *arg){
 
 // }
 
-void pthread_exit(void *value_ptr) {
+void my_pthread_exit(void *value_ptr) {
+	// Should this be setcontext or swapcontext?
 	setcontext(&parent);
 }
 
